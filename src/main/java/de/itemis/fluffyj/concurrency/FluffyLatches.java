@@ -23,9 +23,6 @@ public final class FluffyLatches {
      * time. Precision is milliseconds.
      * </p>
      * <p>
-     * If this method returns, the provided {@code latch} is guaranteed to be zero.
-     * </p>
-     * <p>
      * If waiting is interrupted, the method preserves the interrupt flag and throws a
      * {@link RuntimeException}.
      * </p>
