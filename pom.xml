@@ -7,7 +7,7 @@
 
 	<groupId>com.itemis</groupId>
 	<artifactId>fluffyj</artifactId>
-	<version>1.3.0-SNAPSHOT</version>
+	<version>1.4.0-SNAPSHOT</version>
 
 	<name>Fluffy J</name>
 	<description>A library that tries to put a little fluff ❤ into the daily life of Java developers.</description>
