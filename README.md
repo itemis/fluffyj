@@ -7,7 +7,7 @@ It does sacrifice code precision and expressiveness for readability, meaning it 
 `mvn clean install`
 
 # Sneaky
-With `de.itemis.fluffyj.sneaky.Sneaky` it is possible to throw checked exceptions without the need to declare them. This is done by using the so called **Sneaky Throws Paradigm**, hence the name.
+With `com.itemis.fluffyj.sneaky.Sneaky` it is possible to throw checked exceptions without the need to declare them. This is done by using the so called **Sneaky Throws Paradigm**, hence the name.
   
 This may come in handy in some edge cases where throwing a Throwable is not permitted by the compiler, but wrapping it in a `RuntimeException` may cause pain when handling errors on higher levels of the call stack. Also it may just be very uncomfortable or impossible to do proper error handling within a lambda expression. This is especially true for legacy code that does not allow checked exceptions to be thrown but does also not permit breaking changes to public interfaces. With Sneaky, you may just do it like this:
   
@@ -25,7 +25,7 @@ This may come in handy in some edge cases where throwing a Throwable is not perm
 This kind of thing is usually a smell and only valid in a few situations. Please be careful when doing so as clients are usually not aware of checked exceptions that come out of methods that do not declare them.
 
 # Exceptions
-The package `de.itemis.fluffyj.exceptions` contains code that deals with Throwables.
+The package `com.itemis.fluffyj.exceptions` contains code that deals with Throwables.
 
 ## ImplementationProblemException
 `ImplementationProblemException` may be used to indicate a mistake in the implementation, e. g. a missing default branch in a switch statement. Developers tend to throw a RuntimeException in such a case. `ImplementationProblemException` aims at providing a consistent more precise default way to handle these kind of things, e. g.  
@@ -76,7 +76,7 @@ catch (NullPointerException e) {
 ```
 
 # Concurrency
-The package `de.itemis.fluffyj.concurrency` contains code that makes working with concurrent / asynchronous Java code more streamlined.  
+The package `com.itemis.fluffyj.concurrency` contains code that makes working with concurrent / asynchronous Java code more streamlined.  
   
 
 I always though that Java's concurrency API (`java.util.concurrent`) is as powerful as it is misleading at times. E. g. you cannot just `kill` an Executor, giving threads a meaningful name is a bit bulky and waiting on Futures or Latches needs handling of up to 4 different types of Exceptions. 
