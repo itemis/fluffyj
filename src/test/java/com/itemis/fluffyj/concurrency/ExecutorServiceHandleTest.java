@@ -18,7 +18,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 
 import org.junit.jupiter.api.AfterEach;
@@ -124,26 +123,6 @@ public class ExecutorServiceHandleTest {
         } finally {
             neverendingFuture.stop();
         }
-    }
-
-    @Test
-    public void constructor_takes_thread_count_into_account() {
-        var localExecutor = underTest.getExecutor();
-        AtomicInteger actualThreadCount = new AtomicInteger(0);
-        CountDownLatch startLatch = new CountDownLatch(THREAD_COUNT);
-        CountDownLatch releaseLatch = new CountDownLatch(1);
-
-        for (int i = 0; i < THREAD_COUNT; i++) {
-            localExecutor.submit(() -> {
-                startLatch.countDown();
-                actualThreadCount.getAndIncrement();
-                assertLatch(releaseLatch, DEFAULT_TIMEOUT);
-            });
-        }
-
-        assertLatch(startLatch, DEFAULT_TIMEOUT);
-        releaseLatch.countDown();
-        assertThat(actualThreadCount.get()).as("Encountered unexpected thread count.").isEqualTo(THREAD_COUNT);
     }
 
     @Test
