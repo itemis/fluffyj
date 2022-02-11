@@ -350,6 +350,26 @@
 			<plugin>
 				<artifactId>maven-help-plugin</artifactId>
 			</plugin>
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                </configuration>
+                <!-- nexus-staging-maven-plugin is incompatible to JDK >=16 -->
+                <!-- See https://issues.sonatype.org/browse/OSSRH-66257 -->
+                <!-- See https://stackoverflow.com/a/70157413 -->
+                <dependencies>
+                    <dependency>
+                        <groupId>com.thoughtworks.xstream</groupId>
+                        <artifactId>xstream</artifactId>
+                        <version>1.4.15</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
 		</plugins>
 	</build>
 
