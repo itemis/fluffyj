@@ -3,7 +3,9 @@ A library that tries to put a little fluff ❤ into the daily life of Java devel
   
 It does sacrifice code precision and expressiveness for readability, meaning it can't do everything and is not highly customizable by purpose. It is not and shall never be as powerful and big as the popular libraries like [Guava](https://github.com/google/guava), it just happens to be a collection of things that match my taste and proved to be very helpful during my recent years as a professional developer. Nothing fancy, no wheel reinvented, just some fluff.  
 
-## Build
+## Build  
+Note: JDK >=17 is required for the build.  
+
 `mvn clean install`
 
 # Sneaky
