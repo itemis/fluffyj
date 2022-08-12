@@ -77,7 +77,7 @@
 		<git-commit-id-plugin.version>4.9.10</git-commit-id-plugin.version>
 		<assertj.version>3.22.0</assertj.version>
 		<logback.version>1.2.10</logback.version>
-		<awaitility.version>4.1.1</awaitility.version>
+		<awaitility.version>4.2.0</awaitility.version>
 		<arch.unit.version>0.23.1</arch.unit.version>
 		<!-- Disable class data sharing (CDS) to avoid a nasty JVM warning. -->
         <!-- This usually has only a very small impact on performance and memory usage. -->
