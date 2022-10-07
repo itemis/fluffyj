@@ -12,6 +12,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.awaitility.Awaitility.await;
 
+import com.itemis.fluffyj.tests.InternalTestFutures.NeverendingFuture;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import java.time.Duration;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutionException;
@@ -20,12 +26,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeoutException;
 import java.util.concurrent.atomic.AtomicBoolean;
-
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-import com.itemis.fluffyj.tests.InternalTestFutures.NeverendingFuture;
 
 public class FluffyFuturesTest {
 
@@ -84,7 +84,7 @@ public class FluffyFuturesTest {
 
     @Test
     public void waitOnFuture_returns_value_when_future_is_done() {
-        String expectedValue = "expectedValue";
+        var expectedValue = "expectedValue";
         Future<String> future = executor.submit(() -> expectedValue);
 
         assertThat(waitOnFuture(future, DEFAULT_TIMEOUT)).as("Encountered unexpected return value.").isEqualTo(expectedValue);
@@ -105,8 +105,8 @@ public class FluffyFuturesTest {
     @Test
     public void waitOnFuture_fails_when_wait_is_interrupted_and_preserves_interrupt_flag() {
         Future<?> neverendingFuture = scheduleInterruptibleFuture(executor);
-        CountDownLatch waitingHasStartedLatch = new CountDownLatch(1);
-        AtomicBoolean interruptedFlagPreserved = new AtomicBoolean(false);
+        var waitingHasStartedLatch = new CountDownLatch(1);
+        var interruptedFlagPreserved = new AtomicBoolean(false);
 
         Future<?> futureToWaitOn = anotherExecutor.submit(() -> {
             waitingHasStartedLatch.countDown();
@@ -121,8 +121,10 @@ public class FluffyFuturesTest {
         waitOnLatch(waitingHasStartedLatch, DEFAULT_TIMEOUT);
         kill(anotherExecutor, DEFAULT_TIMEOUT);
 
-        assertThatThrownBy(() -> futureToWaitOn.get(DEFAULT_TIMEOUT.toMillis(), MILLISECONDS)).isInstanceOf(ExecutionException.class)
-            .hasCauseInstanceOf(RuntimeException.class).getCause().hasMessageContaining("Was interrupted while waiting on latch to become zero.")
+        assertThatThrownBy(() -> futureToWaitOn.get(DEFAULT_TIMEOUT.toMillis(), MILLISECONDS))
+            .isInstanceOf(ExecutionException.class)
+            .hasCauseInstanceOf(RuntimeException.class)
+            .cause().hasMessageContaining("Was interrupted while waiting on latch to become zero.")
             .hasCauseExactlyInstanceOf(InterruptedException.class);
 
         assertThat(interruptedFlagPreserved).as("Interrupted assert does not preserve interrupt flag.").isTrue();
