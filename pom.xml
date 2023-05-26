@@ -8,15 +8,14 @@
     <parent>
         <groupId>com.itemis</groupId>
         <artifactId>org-parent</artifactId>
-        <version>5.8.0</version>
+        <version>5.8.1</version>
     </parent>
 
     <artifactId>fluffyj</artifactId>
-    <version>1.13.0-SNAPSHOT</version>
+    <version>1.13.0</version>
 
     <name>Fluffy J</name>
-    <description>A library that tries to put a little fluff ❤ into the daily
-        life of Java developers</description>
+    <description>A library that tries to put a little fluff ❤ into the daily life of Java developers</description>
 
     <packaging>jar</packaging>
 
@@ -336,7 +335,7 @@
                 <executions>
                     <execution>
                         <id>attach-sources</id>
-                        <phase>install</phase>
+                        <phase>compile</phase>
                         <goals>
                             <goal>jar-no-fork</goal>
                         </goals>
