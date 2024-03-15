@@ -35,14 +35,16 @@ public final class UniqueShortIdThreadNameFactory implements ThreadNameFactory {
      *
      * @param prefix - Thread names will have this {@link String} set as prefix.
      */
-    public UniqueShortIdThreadNameFactory(String prefix) {
+    public UniqueShortIdThreadNameFactory(final String prefix) {
         this.prefix = requireNonNull(prefix, "prefix") + ID_SEPARATOR;
     }
 
     @Override
     public String generate() {
         current = (short) ((current + 1) % Short.MAX_VALUE);
-        String id = padStart(toHexString(current).toLowerCase(), ID_LENGTH_IN_CHARACTERS, '0');
+        // Can't do anything about JDK lacking null checks
+        @SuppressWarnings("null")
+        final var id = padStart(toHexString(current).toLowerCase(), ID_LENGTH_IN_CHARACTERS, '0');
         return prefix + id;
     }
 }
