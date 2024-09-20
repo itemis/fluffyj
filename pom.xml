@@ -8,11 +8,11 @@
     <parent>
         <groupId>com.itemis</groupId>
         <artifactId>org-parent</artifactId>
-        <version>5.8.6</version>
+        <version>5.8.7</version>
     </parent>
 
     <artifactId>fluffyj</artifactId>
-    <version>1.13.5-SNAPSHOT</version>
+    <version>1.13.5</version>
 
     <name>Fluffy J</name>
     <description>A library that tries to put a little fluff ❤ into the daily
