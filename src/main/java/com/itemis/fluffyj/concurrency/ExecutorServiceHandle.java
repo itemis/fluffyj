@@ -3,12 +3,12 @@ package com.itemis.fluffyj.concurrency;
 import static com.google.common.base.Preconditions.checkArgument;
 import static java.util.Objects.requireNonNull;
 
+import com.google.errorprone.annotations.ThreadSafe;
+
 import java.time.Duration;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
-
-import javax.annotation.concurrent.ThreadSafe;
 
 /**
  * <p>
@@ -35,13 +35,13 @@ public final class ExecutorServiceHandle {
      *        or equal to zero (gte 0).
      * @param threadNameFactory - All threads will have names created by this factory.
      */
-    public ExecutorServiceHandle(int threadCount, ThreadNameFactory threadNameFactory) {
+    public ExecutorServiceHandle(final int threadCount, final ThreadNameFactory threadNameFactory) {
         checkArgument(threadCount > 0, "Thread count must be gte 0.");
         requireNonNull(threadNameFactory, "threadNameFactory");
 
         this.threadCount = threadCount;
         this.threadFactory = task -> {
-            String id = threadNameFactory.generate();
+            final var id = threadNameFactory.generate();
             return new Thread(task, id);
         };
     }
@@ -88,7 +88,7 @@ public final class ExecutorServiceHandle {
      *
      * @return {@code true} if all running tasks could be stopped. {@code false} otherwise.
      */
-    public boolean kill(Duration timeout) {
+    public boolean kill(final Duration timeout) {
         requireNonNull(timeout, "timeout");
         return FluffyExecutors.kill(getExecutor(), timeout);
     }
