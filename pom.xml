@@ -77,7 +77,7 @@
         <assertj.version>3.27.3</assertj.version>
         <logback.version>1.5.18</logback.version>
         <awaitility.version>4.3.0</awaitility.version>
-        <arch.unit.version>1.4.0</arch.unit.version>
+        <arch.unit.version>1.4.1</arch.unit.version>
         <!-- Disable class data sharing (CDS) to avoid a nasty JVM warning. -->
         <!-- This usually has only a very small impact on performance and memory
         usage. -->
