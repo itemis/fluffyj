@@ -8,11 +8,11 @@
     <parent>
         <groupId>com.itemis</groupId>
         <artifactId>org-parent</artifactId>
-        <version>5.8.4</version>
+        <version>5.8.10</version>
     </parent>
 
     <artifactId>fluffyj</artifactId>
-    <version>1.13.4</version>
+    <version>1.13.6</version>
 
     <name>Fluffy J</name>
     <description>A library that tries to put a little fluff ❤ into the daily
@@ -63,21 +63,21 @@
         <build.timestamp.formatted>${maven.build.timestamp}</build.timestamp.formatted>
         <maven.build.timestamp.format>yyyy-MM-dd HH:mm.ssZ</maven.build.timestamp.format>
         <resource.delimiter>${*}</resource.delimiter>
-        <maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
-        <maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
-        <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
-        <guava.version>33.1.0-jre</guava.version>
-        <mockito.version>5.11.0</mockito.version>
-        <hamcrest.version>2.2</hamcrest.version>
+        <maven-surefire-plugin.version>3.5.3</maven-surefire-plugin.version>
+        <maven-jar-plugin.version>3.4.2</maven-jar-plugin.version>
+        <maven-compiler-plugin.version>3.14.0</maven-compiler-plugin.version>
+        <mockito.version>5.18.0</mockito.version>
+        <guava.version>33.4.8-jre</guava.version>
+        <hamcrest.version>3.0</hamcrest.version>
         <!-- Be aware: Spotbugs seems incompatible to JDK < 17 since 4.4.2 -->
-        <spotbugs.plugin.version>4.8.4.0</spotbugs.plugin.version>
-        <junit.version>5.10.2</junit.version>
-        <jacoco.plugin.version>0.8.12</jacoco.plugin.version>
-        <git-commit-id-plugin.version>8.0.2</git-commit-id-plugin.version>
-        <assertj.version>3.25.3</assertj.version>
-        <logback.version>1.5.3</logback.version>
-        <awaitility.version>4.2.1</awaitility.version>
-        <arch.unit.version>1.2.1</arch.unit.version>
+        <junit.version>5.13.0</junit.version>
+        <spotbugs.plugin.version>4.9.3.0</spotbugs.plugin.version>
+        <jacoco.plugin.version>0.8.13</jacoco.plugin.version>
+        <git-commit-id-plugin.version>9.0.2</git-commit-id-plugin.version>
+        <assertj.version>3.27.3</assertj.version>
+        <logback.version>1.5.18</logback.version>
+        <awaitility.version>4.3.0</awaitility.version>
+        <arch.unit.version>1.4.1</arch.unit.version>
         <!-- Disable class data sharing (CDS) to avoid a nasty JVM warning. -->
         <!-- This usually has only a very small impact on performance and memory
         usage. -->
