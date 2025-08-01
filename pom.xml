@@ -344,8 +344,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <!-- For warnings about illegal reflective access see
-            https://issues.apache.org/jira/browse/GROOVY-8339 -->
             <plugin>
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs-maven-plugin</artifactId>
@@ -359,6 +357,9 @@
                 </executions>
                 <configuration>
                     <excludeFilterFile>spotbugs-exclude.xml</excludeFilterFile>
+                    <skipEmptyReport>true</skipEmptyReport>
+                    <xmlOutput>false</xmlOutput>
+                    <htmlOutput>false</htmlOutput>
                 </configuration>
             </plugin>
             <plugin>
